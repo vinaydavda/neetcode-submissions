@@ -1,0 +1,15 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        new_arr = []
+
+        for i in range(len(nums)):
+            if i == 0:
+                new_arr.append(math.prod(nums[i + 1:]))
+            elif i == len(nums) - 1:
+                new_arr.append(math.prod(nums[:i]))
+            else:
+                check_nums = nums[:i]
+                check_nums.extend(nums[i + 1:])
+                new_arr.append(math.prod(check_nums))
+
+        return new_arr
